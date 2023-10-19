@@ -1,51 +1,47 @@
-import { useEffect, useRef } from 'react'
-import * as THREE from 'three'
-import GLOBE from 'vanta/dist/vanta.globe.min'
-import home from '../styles/Home.module.css'
+import Link from "next/link";
+import { client } from '../libs/client';
+import type { Article } from '../types/article';
+import styles from '../styles/Home.module.css';
 
-const Home = () => {
-  const vantaRef = useRef(null)
+type Props = {
+  articles: Array<Article>;
+};
 
-  useEffect(() => {
-    const vantaEffect = GLOBE({
-      el: vantaRef.current,
-      THREE,
-      mouseControls: true,
-      touchControls: true,
-      gyroControls: false,
-      minHeight: 200.0,
-      minWidth: 200.0,
-      scale: 1.0,
-      scaleMobile: 1.0,
-      color: 0x0000ff,
-      color2: 0x00b300,
-      backgroundColor: 0xc2c2ff
-    })
-
-    return () => {
-      if (vantaEffect) vantaEffect.destroy()
-    }
-  }, [])
-
+export default function Home({ articles }: Props) {
   return (
     <>
-    <div
-      style={{
-        height: '100vh',
-        width: '100%',
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        zIndex: -30,
-      }}
-      ref={vantaRef}
-    />
-    <div className={home.container}>
-      <h1>Niigata Money Literacy</h1>
-      <p>NGT金融リテラシー向上委員会</p>
-    </div>
+      <h1 className="container mx-auto px-10 pt-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3">
+        記事一覧
+      </h1>
+      <div className="container mx-auto p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
+        {articles.map(article => (
+          <div className="rounded overflow-hidden shadow-lg" key={article.id}>
+            <img
+              className="w-full"
+              src={article.eye_catch.url}
+              alt="Sunset in the mountains"
+            />
+            <div className="px-6 py-4">{article.title}</div>
+            <div className="px-6 pt-4 pb-2">
+            {article.tag && (
+              <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                # テストタグ
+              </span>
+            )}
+            </div>
+          </div>
+        ))}
+      </div>
     </>
   )
 }
 
-export default Home
+export const getServerSideProps = async () => {
+  const data = await client.get({ endpoint: 'blogs' });
+
+  return {
+    props: {
+      articles: data.contents,
+    },
+  };
+};
