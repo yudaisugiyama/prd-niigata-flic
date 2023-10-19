@@ -7,9 +7,9 @@ export default function Header() {
       <div className="container mx-auto flex items-center justify-between">
         <nav className="space-x-4">
           <Link href="/" className="text-white hover:text-gray-300">Home</Link>
-          <Link href="/about" className="text-white hover:text-gray-300">Event</Link>
-          <Link href="/contact" className="text-white hover:text-gray-300">Blog</Link>
-          <Link href="/contact" className="text-white hover:text-gray-300">Support</Link>
+          <Link href="/event" className="text-white hover:text-gray-300">Event</Link>
+          {/* <Link href="/blog" className="text-white hover:text-gray-300">Blog</Link> */}
+          <Link href="/support" className="text-white hover:text-gray-300">Support</Link>
         </nav>
       </div>
     </header>

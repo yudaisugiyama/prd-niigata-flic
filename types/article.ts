@@ -12,4 +12,5 @@ export type Article = {
       width: number
     }
     tag: string
+    url: string
   }
