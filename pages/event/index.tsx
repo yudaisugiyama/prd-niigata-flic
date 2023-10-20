@@ -1,15 +1,15 @@
 import Link from "next/link";
 import { client } from '../../libs/client';
-import type { Article } from '../../types/article';
+import type { Event } from '../../types/article';
 
 // MicroCMS
 type Props = {
-  articles: Array<Article>;
+  articles: Array<Event>;
 };
 
 // SSG
 export const getServerSideProps = async () => {
-  const data = await client.get({ endpoint: 'blogs' });
+  const data = await client.get({ endpoint: 'events' });
 
   return {
     props: {
@@ -28,7 +28,7 @@ export default function Home({ articles }: Props) {
   return (
     <>
       {/* トピックス */}
-      <h1 className="container mx-auto px-10 pt-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3">
+      <h1 className="container mx-auto px-10 pt-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 text-2xl font-semibold">
         Event
       </h1>
 
@@ -38,7 +38,7 @@ export default function Home({ articles }: Props) {
       <div className="rounded-lg overflow-hidden shadow-lg bg-opacity-50 border border-neutral-600" key={article.id}>
         <Link href={`event/${article.id}`}>
           <img
-            className="w-full"
+            className="w-full hover:bg-gray-100 hover:shadow-lg hover:scale-105 focus:outline-none focus:bg-gray-100 focus:shadow-lg focus:scale-105 active:bg-gray-200"
             src={article.eye_catch.url}
             alt="Sunset in the mountains"
           />

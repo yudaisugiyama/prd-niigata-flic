@@ -8,7 +8,7 @@ export default function Header() {
         <nav className="space-x-4">
           <Link href="/" className="text-white hover:text-gray-300">Home</Link>
           <Link href="/event" className="text-white hover:text-gray-300">Event</Link>
-          {/* <Link href="/blog" className="text-white hover:text-gray-300">Blog</Link> */}
+          <Link href="/blog" className="text-white hover:text-gray-300">Blog</Link>
           <Link href="/support" className="text-white hover:text-gray-300">Support</Link>
         </nav>
       </div>
