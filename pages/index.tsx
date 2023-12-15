@@ -37,6 +37,11 @@ export default function Home({ articles }: Props) {
         onEnded={(e) => restartVideo(e.target as HTMLVideoElement)}>
       </video>
 
+      <div style={{ width: '50%', margin: '30px', float: 'left' }}>
+        {/* Twitterタイムラインの埋め込みコード */}
+        <a className="twitter-timeline" href="https://twitter.com/niigataflic?ref_src=twsrc%5Etfw">Tweets by niigataflic</a> <script async src="https://platform.twitter.com/widgets.js"></script>
+      </div>
+
       {/* トピックス */}
       <h1 className="container mx-auto px-10 pt-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 text-2xl font-semibold">
         Topics
