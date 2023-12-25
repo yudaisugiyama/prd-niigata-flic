@@ -2,7 +2,7 @@ FROM node:18-alpine AS base
 
 ARG API_KEY
 
-ENV API_KEY=$API_KEY
+ENV NEXT_PUBLIC_API_KEY=$API_KEY
 
 # Install dependencies only when needed
 FROM base AS deps
