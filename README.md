@@ -20,12 +20,12 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
 ## Learn More
 
-1. 
+1.
 ```
 npx create-next-app@12.3.5 --typescript --eslint
 ```
 
-2. 
+2.
 https://tailwindcss.com/docs/guides/nextjs
 
 npm install microcms-js-sdk
