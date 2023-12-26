@@ -7,7 +7,7 @@ export default function Document({
 }) {
     return (
         <Html lang="jp">
-            {/* ヘッダーにGoogle Analyticsのスクリプトコードを埋め込み */}
+            {/* HeadにGoogle Analyticsのスクリプトコードを埋め込み */}
             <script async src="https://www.googletagmanager.com/gtag/js?id=G-01K2DFY8Z7"></script>
             <script
                 dangerouslySetInnerHTML={{
@@ -21,11 +21,7 @@ export default function Document({
                 `,
                 }}
             />
-
-            <meta charSet="utf-8" />
-            <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <Head />
+            <Head />
         <body>
             {children}
             <Main />
